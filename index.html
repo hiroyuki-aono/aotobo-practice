@@ -4,17 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>青トンボ運送合同会社 | 静岡市清水区の軽貨物配送・家電修理</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: #1a1a1a; }
 
+/* ナビゲーション固定 */
 .nav {
   background: #051f17;
   display: flex;
   justify-content: center;
-  gap: 0;
   flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 .nav a {
   color: #a8d5c2;
@@ -22,8 +24,14 @@ body { font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: #1a1a1a;
   font-size: 0.85rem;
   padding: 0.8rem 1rem;
   display: block;
+  transition: color 0.2s;
 }
 .nav a:hover { color: #fff; }
+
+/* スクロール時にナビの高さ分ずらす */
+section[id], div[id] {
+  scroll-margin-top: 45px;
+}
 
 .hero {
   background: #0a3d2e;
@@ -198,11 +206,7 @@ body { font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: #1a1a1a;
   flex-shrink: 0;
   margin-top: 1px;
 }
-.feature-check::after {
-  content: '✓';
-  color: #fff;
-  font-size: 13px;
-}
+.feature-check::after { content: '✓'; color: #fff; font-size: 13px; }
 .feature-item h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 2px; }
 .feature-item p { font-size: 0.8rem; color: #555; line-height: 1.5; }
 
@@ -218,6 +222,37 @@ body { font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: #1a1a1a;
 }
 .area-main { font-size: 1.1rem; font-weight: 500; color: #0a3d2e; margin-bottom: 0.5rem; }
 .area-detail { font-size: 0.85rem; color: #555; line-height: 1.7; }
+
+.about { background: #fff; }
+.about-box {
+  max-width: 480px;
+  margin: 0 auto;
+  background: #f5f5f3;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.about-row {
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+}
+.about-row:last-child { border-bottom: none; }
+.about-label {
+  background: #0a3d2e;
+  color: #a8d5c2;
+  font-size: 0.82rem;
+  padding: 0.85rem 1rem;
+  width: 110px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.about-value {
+  font-size: 0.85rem;
+  color: #1a1a1a;
+  padding: 0.85rem 1rem;
+  line-height: 1.6;
+}
 
 .contact-section {
   background: #0a3d2e;
@@ -255,15 +290,17 @@ body { font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: #1a1a1a;
 </head>
 <body>
 
+<!-- ナビゲーション：各セクションのIDにリンク -->
 <nav class="nav">
-  <a href="#">ホーム</a>
-  <a href="#">サービス</a>
-  <a href="#">対応エリア</a>
-  <a href="#">会社概要</a>
-  <a href="#">お問い合わせ</a>
+  <a href="#home">ホーム</a>
+  <a href="#services">サービス</a>
+  <a href="#area">対応エリア</a>
+  <a href="#about">会社概要</a>
+  <a href="#contact">お問い合わせ</a>
 </nav>
 
-<div class="hero">
+<!-- ホーム -->
+<div id="home" class="hero">
   <div class="logo-mark">
     <span class="dragonfly">🚐</span>
     <span class="company-name">青トンボ運送合同会社</span>
@@ -271,8 +308,8 @@ body { font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: #1a1a1a;
   <h1>静岡・清水区の<br>頼れる地域密着配送</h1>
   <p class="hero-sub">軽貨物配送 ／ 家電修理　スピード対応でお困りごとを解決します</p>
   <div class="hero-btns">
-    <a class="btn-primary" href="#">今すぐ相談する</a>
-    <a class="btn-secondary" href="#">サービス詳細</a>
+    <a class="btn-primary" href="#contact">今すぐ相談する</a>
+    <a class="btn-secondary" href="#services">サービス詳細</a>
   </div>
 </div>
 
@@ -280,7 +317,8 @@ body { font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: #1a1a1a;
   お気軽にご連絡ください　<span>0XX-XXX-XXXX</span>　受付 8:00〜19:00（年中無休）
 </div>
 
-<section class="section services">
+<!-- サービス -->
+<section id="services" class="section services">
   <p class="section-title">サービス</p>
   <p class="section-sub">SERVICES</p>
   <div class="divider"></div>
@@ -298,6 +336,7 @@ body { font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: #1a1a1a;
   </div>
 </section>
 
+<!-- 選ばれる理由（ホームの延長なのでIDなし） -->
 <section class="section features">
   <p class="section-title">選ばれる理由</p>
   <p class="section-sub">WHY CHOOSE US</p>
@@ -327,7 +366,8 @@ body { font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: #1a1a1a;
   </div>
 </section>
 
-<section class="section area">
+<!-- 対応エリア -->
+<section id="area" class="section area">
   <p class="section-title">対応エリア</p>
   <p class="section-sub">SERVICE AREA</p>
   <div class="divider"></div>
@@ -340,7 +380,41 @@ body { font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: #1a1a1a;
   </div>
 </section>
 
-<section class="contact-section">
+<!-- 会社概要 -->
+<section id="about" class="section about">
+  <p class="section-title">会社概要</p>
+  <p class="section-sub">ABOUT US</p>
+  <div class="divider"></div>
+  <div class="about-box">
+    <div class="about-row">
+      <span class="about-label">会社名</span>
+      <span class="about-value">青トンボ運送合同会社</span>
+    </div>
+    <div class="about-row">
+      <span class="about-label">所在地</span>
+      <span class="about-value">〒424-XXXX 静岡県静岡市清水区 ○○町X-X-X</span>
+    </div>
+    <div class="about-row">
+      <span class="about-label">代表者</span>
+      <span class="about-value">青野 浩行</span>
+    </div>
+    <div class="about-row">
+      <span class="about-label">事業内容</span>
+      <span class="about-value">軽貨物配送・家電修理</span>
+    </div>
+    <div class="about-row">
+      <span class="about-label">営業時間</span>
+      <span class="about-value">8:00〜19:00（年中無休）</span>
+    </div>
+    <div class="about-row">
+      <span class="about-label">電話番号</span>
+      <span class="about-value">0XX-XXX-XXXX</span>
+    </div>
+  </div>
+</section>
+
+<!-- お問い合わせ -->
+<section id="contact" class="contact-section">
   <p class="section-title">お問い合わせ</p>
   <p class="section-sub">CONTACT</p>
   <div class="divider"></div>
@@ -356,7 +430,7 @@ body { font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: #1a1a1a;
       <p>info@example.com</p>
     </div>
   </div>
-  <a class="btn-primary" href="#">お問い合わせフォーム</a>
+  <a class="btn-primary" href="mailto:info@example.com">メールで問い合わせる</a>
 </section>
 
 <footer class="footer">
