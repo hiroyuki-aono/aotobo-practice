@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>青トンボ運送合同会社 | 静岡市清水区の軽貨物配送・家電修理</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: #1a1a1a; }
+
+/* ナビゲーション固定 */
+.nav {
+  background: #051f17;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav a {
+  color: #a8d5c2;
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 0.8rem 1rem;
+  display: block;
+  transition: color 0.2s;
+}
+.nav a:hover { color: #fff; }
+
+/* スクロール時にナビの高さ分ずらす */
+section[id], div[id] {
+  scroll-margin-top: 45px;
+}
+
+.hero {
+  background: #0a3d2e;
+  color: #fff;
+  padding: 3rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: #1a6b50;
+  opacity: 0.4;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: #1a6b50;
+  opacity: 0.3;
+}
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+.dragonfly { font-size: 2.2rem; }
+.company-name { font-size: 1rem; color: #a8d5c2; letter-spacing: 0.1em; }
+.hero h1 {
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+  position: relative;
+  z-index: 1;
+}
+.hero-sub {
+  font-size: 0.95rem;
+  color: #a8d5c2;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.btn-primary {
+  background: #f0a500;
+  color: #3a2500;
+  border: none;
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tel-bar {
+  background: #f0a500;
+  color: #3a2500;
+  text-align: center;
+  padding: 0.9rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.tel-bar span {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin: 0 6px;
+}
+
+.section { padding: 2.5rem 1.5rem; }
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #0a3d2e;
+  text-align: center;
+  margin-bottom: 0.4rem;
+}
+.section-sub {
+  font-size: 0.82rem;
+  color: #888;
+  text-align: center;
+  margin-bottom: 0;
+  letter-spacing: 0.08em;
+}
+.divider {
+  width: 32px;
+  height: 2px;
+  background: #f0a500;
+  margin: 0.5rem auto 1.8rem;
+}
+
+.services { background: #f5f5f3; }
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.service-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+}
+.service-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+.service-card h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #0a3d2e;
+}
+.service-card p { font-size: 0.82rem; color: #555; line-height: 1.6; }
+
+.features { background: #fff; }
+.feature-list {
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 1rem 1.25rem;
+  background: #f5f5f3;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+}
+.feature-check {
+  width: 24px;
+  height: 24px;
+  background: #0a3d2e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.feature-check::after { content: '✓'; color: #fff; font-size: 13px; }
+.feature-item h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 2px; }
+.feature-item p { font-size: 0.8rem; color: #555; line-height: 1.5; }
+
+.area { background: #f5f5f3; }
+.area-box {
+  max-width: 480px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+}
+.area-main { font-size: 1.1rem; font-weight: 500; color: #0a3d2e; margin-bottom: 0.5rem; }
+.area-detail { font-size: 0.85rem; color: #555; line-height: 1.7; }
+
+.about { background: #fff; }
+.about-box {
+  max-width: 480px;
+  margin: 0 auto;
+  background: #f5f5f3;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.about-row {
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+}
+.about-row:last-child { border-bottom: none; }
+.about-label {
+  background: #0a3d2e;
+  color: #a8d5c2;
+  font-size: 0.82rem;
+  padding: 0.85rem 1rem;
+  width: 110px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.about-value {
+  font-size: 0.85rem;
+  color: #1a1a1a;
+  padding: 0.85rem 1rem;
+  line-height: 1.6;
+}
+
+.contact-section {
+  background: #0a3d2e;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: #fff;
+}
+.contact-section .section-title { color: #fff; }
+.contact-section .section-sub { color: #a8d5c2; }
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  max-width: 480px;
+  margin: 0 auto 1.5rem;
+}
+.contact-card {
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+.contact-card .icon { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
+.contact-card h4 { font-size: 0.85rem; color: #a8d5c2; margin-bottom: 0.3rem; }
+.contact-card p { font-size: 0.9rem; color: #fff; font-weight: 500; }
+
+.footer {
+  background: #051f17;
+  color: #a8d5c2;
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.78rem;
+}
+.footer-name { font-size: 0.9rem; color: #fff; margin-bottom: 0.3rem; }
+</style>
+</head>
+<body>
+
+<!-- ナビゲーション：各セクションのIDにリンク -->
+<nav class="nav">
+  <a href="#home">ホーム</a>
+  <a href="#services">サービス</a>
+  <a href="#area">対応エリア</a>
+  <a href="#about">会社概要</a>
+  <a href="#contact">お問い合わせ</a>
+</nav>
+
+<!-- ホーム -->
+<div id="home" class="hero">
+  <div class="logo-mark">
+    <span class="dragonfly">🚐</span>
+    <span class="company-name">青トンボ運送合同会社</span>
+  </div>
+  <h1>静岡・清水区の<br>頼れる地域密着配送</h1>
+  <p class="hero-sub">軽貨物配送 ／ 家電修理　スピード対応でお困りごとを解決します</p>
+  <div class="hero-btns">
+    <a class="btn-primary" href="#contact">今すぐ相談する</a>
+    <a class="btn-secondary" href="#services">サービス詳細</a>
+  </div>
+</div>
+
+<div class="tel-bar">
+  お気軽にご連絡ください　<span>0XX-XXX-XXXX</span>　受付 8:00〜19:00（年中無休）
+</div>
+
+<!-- サービス -->
+<section id="services" class="section services">
+  <p class="section-title">サービス</p>
+  <p class="section-sub">SERVICES</p>
+  <div class="divider"></div>
+  <div class="service-grid">
+    <div class="service-card">
+      <span class="service-icon">📦</span>
+      <h3>軽貨物配送</h3>
+      <p>小荷物から精密機器まで、丁寧・迅速にお届けします。スポット便・定期便どちらも対応可能です。</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔧</span>
+      <h3>家電修理</h3>
+      <p>洗濯機・冷蔵庫・エアコンなど生活家電の修理・点検を行います。出張対応いたします。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 選ばれる理由（ホームの延長なのでIDなし） -->
+<section class="section features">
+  <p class="section-title">選ばれる理由</p>
+  <p class="section-sub">WHY CHOOSE US</p>
+  <div class="divider"></div>
+  <div class="feature-list">
+    <div class="feature-item">
+      <div class="feature-check"></div>
+      <div>
+        <h4>地域密着の安心感</h4>
+        <p>静岡市清水区を拠点に、地元を知り尽くしたスタッフが迅速に対応します。</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-check"></div>
+      <div>
+        <h4>スピード対応</h4>
+        <p>ご連絡から最短即日でお伺い。お急ぎのご依頼もお気軽にご相談ください。</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-check"></div>
+      <div>
+        <h4>明朗会計</h4>
+        <p>作業前に必ずお見積もりをご提示。追加費用が発生する場合は事前にご説明します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 対応エリア -->
+<section id="area" class="section area">
+  <p class="section-title">対応エリア</p>
+  <p class="section-sub">SERVICE AREA</p>
+  <div class="divider"></div>
+  <div class="area-box">
+    <p class="area-main">静岡市を中心に対応しています</p>
+    <p class="area-detail">
+      清水区・葵区・駿河区<br>
+      ※エリア外もご相談ください
+    </p>
+  </div>
+</section>
+
+<!-- 会社概要 -->
+<section id="about" class="section about">
+  <p class="section-title">会社概要</p>
+  <p class="section-sub">ABOUT US</p>
+  <div class="divider"></div>
+  <div class="about-box">
+    <div class="about-row">
+      <span class="about-label">会社名</span>
+      <span class="about-value">青トンボ運送合同会社</span>
+    </div>
+    <div class="about-row">
+      <span class="about-label">所在地</span>
+      <span class="about-value">〒424-XXXX 静岡県静岡市清水区 ○○町X-X-X</span>
+    </div>
+    <div class="about-row">
+      <span class="about-label">代表者</span>
+      <span class="about-value">青野 浩行</span>
+    </div>
+    <div class="about-row">
+      <span class="about-label">事業内容</span>
+      <span class="about-value">軽貨物配送・家電修理</span>
+    </div>
+    <div class="about-row">
+      <span class="about-label">営業時間</span>
+      <span class="about-value">8:00〜19:00（年中無休）</span>
+    </div>
+    <div class="about-row">
+      <span class="about-label">電話番号</span>
+      <span class="about-value">0XX-XXX-XXXX</span>
+    </div>
+  </div>
+</section>
+
+<!-- お問い合わせ -->
+<section id="contact" class="contact-section">
+  <p class="section-title">お問い合わせ</p>
+  <p class="section-sub">CONTACT</p>
+  <div class="divider"></div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <span class="icon">📞</span>
+      <h4>お電話</h4>
+      <p>0XX-XXX-XXXX</p>
+    </div>
+    <div class="contact-card">
+      <span class="icon">✉️</span>
+      <h4>メール</h4>
+      <p>info@example.com</p>
+    </div>
+  </div>
+  <a class="btn-primary" href="mailto:info@example.com">メールで問い合わせる</a>
+</section>
+
+<footer class="footer">
+  <p class="footer-name">青トンボ運送合同会社</p>
+  <p>〒424-XXXX 静岡県静岡市清水区 ○○町X-X-X</p>
+  <p style="margin-top: 0.75rem;">© 2024 青トンボ運送合同会社</p>
+</footer>
+
+</body>
+</html>
