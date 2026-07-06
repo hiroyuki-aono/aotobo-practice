@@ -8,7 +8,6 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: #1a1a1a; }
 
-/* ナビゲーション固定 */
 .nav {
   background: #051f17;
   display: flex;
@@ -28,10 +27,7 @@ body { font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: #1a1a1a;
 }
 .nav a:hover { color: #fff; }
 
-/* スクロール時にナビの高さ分ずらす */
-section[id], div[id] {
-  scroll-margin-top: 45px;
-}
+section[id], div[id] { scroll-margin-top: 45px; }
 
 .hero {
   background: #0a3d2e;
@@ -254,6 +250,21 @@ section[id], div[id] {
   line-height: 1.6;
 }
 
+/* Googleマップ */
+.map-wrap {
+  max-width: 480px;
+  margin: 1.5rem auto 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+}
+.map-wrap iframe {
+  width: 100%;
+  height: 260px;
+  border: none;
+  display: block;
+}
+
 .contact-section {
   background: #0a3d2e;
   padding: 2.5rem 1.5rem;
@@ -290,7 +301,6 @@ section[id], div[id] {
 </head>
 <body>
 
-<!-- ナビゲーション：各セクションのIDにリンク -->
 <nav class="nav">
   <a href="#home">ホーム</a>
   <a href="#services">サービス</a>
@@ -299,7 +309,6 @@ section[id], div[id] {
   <a href="#contact">お問い合わせ</a>
 </nav>
 
-<!-- ホーム -->
 <div id="home" class="hero">
   <div class="logo-mark">
     <span class="dragonfly">🚐</span>
@@ -317,7 +326,6 @@ section[id], div[id] {
   お気軽にご連絡ください　<span>0XX-XXX-XXXX</span>　受付 8:00〜19:00（年中無休）
 </div>
 
-<!-- サービス -->
 <section id="services" class="section services">
   <p class="section-title">サービス</p>
   <p class="section-sub">SERVICES</p>
@@ -336,7 +344,6 @@ section[id], div[id] {
   </div>
 </section>
 
-<!-- 選ばれる理由（ホームの延長なのでIDなし） -->
 <section class="section features">
   <p class="section-title">選ばれる理由</p>
   <p class="section-sub">WHY CHOOSE US</p>
@@ -366,7 +373,6 @@ section[id], div[id] {
   </div>
 </section>
 
-<!-- 対応エリア -->
 <section id="area" class="section area">
   <p class="section-title">対応エリア</p>
   <p class="section-sub">SERVICE AREA</p>
@@ -380,7 +386,6 @@ section[id], div[id] {
   </div>
 </section>
 
-<!-- 会社概要 -->
 <section id="about" class="section about">
   <p class="section-title">会社概要</p>
   <p class="section-sub">ABOUT US</p>
@@ -392,7 +397,7 @@ section[id], div[id] {
     </div>
     <div class="about-row">
       <span class="about-label">所在地</span>
-      <span class="about-value">〒424-XXXX 静岡県静岡市清水区 ○○町X-X-X</span>
+      <span class="about-value">〒420-0859 静岡県静岡市葵区栄町2番地5<br>アークビルディング502</span>
     </div>
     <div class="about-row">
       <span class="about-label">代表者</span>
@@ -411,9 +416,19 @@ section[id], div[id] {
       <span class="about-value">0XX-XXX-XXXX</span>
     </div>
   </div>
+
+  <!-- Googleマップ（静岡市葵区栄町2-5 アークビルディング） -->
+  <div class="map-wrap">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.0!2d138.3867!3d34.9756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601be0e1c58a0001%3A0x1!2z5oiQ5bKp55S677yS5LiB5Zue77yV44CA6Z2S5bKp55yM6Z2S5bKp5biC6JGJ5Yy655S677yS55S677yV!5e0!3m2!1sja!2sjp!4v1700000000000"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="青トンボ運送合同会社 所在地マップ">
+    </iframe>
+  </div>
 </section>
 
-<!-- お問い合わせ -->
 <section id="contact" class="contact-section">
   <p class="section-title">お問い合わせ</p>
   <p class="section-sub">CONTACT</p>
@@ -435,7 +450,7 @@ section[id], div[id] {
 
 <footer class="footer">
   <p class="footer-name">青トンボ運送合同会社</p>
-  <p>〒424-XXXX 静岡県静岡市清水区 ○○町X-X-X</p>
+  <p>〒420-0859 静岡県静岡市葵区栄町2番地5 アークビルディング502</p>
   <p style="margin-top: 0.75rem;">© 2024 青トンボ運送合同会社</p>
 </footer>
 
