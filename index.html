@@ -42,8 +42,7 @@ section[id], div[id] { scroll-margin-top: 45px; }
 .hero-bg {
   position: absolute;
   inset: 0;
-  /* 日本の高速道路や物流をイメージしやすい画像に変更 */
-  background-image: url('https://images.unsplash.com/photo-1519003722824-192d992a605e?w=1200&q=80');
+  background-image: url('https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=1200&q=80');
   background-size: cover;
   background-position: center;
   filter: brightness(0.45);
@@ -314,6 +313,7 @@ section[id], div[id] { scroll-margin-top: 45px; }
   <a href="cases.html">対応事例</a>
 </nav>
 
+<!-- ホーム：写真背景ヒーロー -->
 <div id="home" class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
@@ -329,9 +329,10 @@ section[id], div[id] { scroll-margin-top: 45px; }
 </div>
 
 <div class="tel-bar">
-  お気軽にご連絡ください <span>0XX-XXX-XXXX</span> 受付 8:00〜19:00（年中無休）
+  お気軽にご連絡ください　<span>0XX-XXX-XXXX</span>　受付 8:00〜19:00（年中無休）
 </div>
 
+<!-- サービス -->
 <section id="services" class="section services">
   <p class="section-title">サービス</p>
   <p class="section-sub">SERVICES</p>
@@ -339,7 +340,7 @@ section[id], div[id] { scroll-margin-top: 45px; }
   <div class="service-grid">
     <div class="service-card">
       <img class="service-photo"
-        src="https://placehold.jp/34/0a3d2e/ffffff/400x140.png?text=%E8%BD%BB%E8%B2%A8%E7%89%A9%E9%85%8D%E9%80%81%E3%83%BB%E9%81%8B%E9%80%81%E4%BF%B3"
+        src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80"
         alt="軽貨物配送サービス">
       <div class="service-body">
         <span class="service-icon">📦</span>
@@ -349,7 +350,7 @@ section[id], div[id] { scroll-margin-top: 45px; }
     </div>
     <div class="service-card">
       <img class="service-photo"
-        src="https://placehold.jp/34/f0a500/3a2500/400x140.png?text=%E5%AE%B6%E9%9B%BB%E4%BF%AE%E7%90%86%E3%83%BB%E3%83%A1%E3%83%B3%E3%83%86%E3%83%8A%E3%83%B3%E3%82%B9"
+        src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&q=80"
         alt="家電修理サービス">
       <div class="service-body">
         <span class="service-icon">🔧</span>
@@ -360,6 +361,7 @@ section[id], div[id] { scroll-margin-top: 45px; }
   </div>
 </section>
 
+<!-- 選ばれる理由 -->
 <section class="section features">
   <p class="section-title">選ばれる理由</p>
   <p class="section-sub">WHY CHOOSE US</p>
@@ -380,6 +382,7 @@ section[id], div[id] { scroll-margin-top: 45px; }
   </div>
 </section>
 
+<!-- 対応エリア -->
 <section id="area" class="section area">
   <p class="section-title">対応エリア</p>
   <p class="section-sub">SERVICE AREA</p>
@@ -390,6 +393,7 @@ section[id], div[id] { scroll-margin-top: 45px; }
   </div>
 </section>
 
+<!-- 会社概要 -->
 <section id="about" class="section about">
   <p class="section-title">会社概要</p>
   <p class="section-sub">ABOUT US</p>
@@ -403,10 +407,15 @@ section[id], div[id] { scroll-margin-top: 45px; }
     <div class="about-row"><span class="about-label">電話番号</span><span class="about-value">0XX-XXX-XXXX</span></div>
   </div>
   <div class="map-wrap">
-    <img src="https://placehold.jp/24/cccccc/555555/480x260.png?text=%E9%9D%99%E5%B2%A1%E7%9C%8C%E9%9D%99%E5%B2%A1%E5%B8%82%E8%91%AA%E5%8C%BA%E6%A0%84%E7%94%BA%E5%91%A8%E8%BE%BA%E3%83%9E%E3%83%83%E3%83%97" alt="周辺地図" style="width:100%; height:auto; display:block;">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.0!2d138.3867!3d34.9756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601be0e1c58a0001%3A0x1!2z5oiQ5bKp55S677yS5LiB5Zue77yV44CA6Z2S5bKp55yM6Z2S5bKp5biC6JGJ5Yy655S677yS55S677yV!5e0!3m2!1sja!2sjp!4v1700000000000"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      title="青トンボ運送合同会社 所在地マップ">
+    </iframe>
   </div>
 </section>
 
+<!-- お問い合わせ -->
 <section id="contact" class="contact-section">
   <p class="section-title">お問い合わせ</p>
   <p class="section-sub">CONTACT</p>
