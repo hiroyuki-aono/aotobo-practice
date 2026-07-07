@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>料金シミュレーター | 青トンボ運送合同会社</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #f5f5f3; }
+
+.nav {
+  background: #051f17;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav a {
+  color: #a8d5c2;
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 0.8rem 1rem;
+  display: block;
+}
+.nav a:hover { color: #fff; }
+.nav a.active { color: #f0a500; }
+
+.page-header {
+  background: #0a3d2e;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+.page-header h1 { font-size: 1.3rem; font-weight: 500; margin-bottom: 0.3rem; }
+.page-header p { font-size: 0.85rem; color: #a8d5c2; }
+
+.container {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #e0e0e0;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+.card h2 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #0a3d2e;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+/* タブ切替 */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+.tab {
+  flex: 1;
+  padding: 0.65rem;
+  border-radius: 8px;
+  border: 1.5px solid #e0e0e0;
+  background: #f5f5f3;
+  font-size: 0.88rem;
+  cursor: pointer;
+  text-align: center;
+  color: #555;
+  font-family: inherit;
+}
+.tab.active {
+  background: #0a3d2e;
+  color: #fff;
+  border-color: #0a3d2e;
+}
+
+/* フォーム要素 */
+.form-group { margin-bottom: 1.1rem; }
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+.form-group select,
+.form-group input[type="number"] {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  background: #fff;
+  color: #1a1a1a;
+  appearance: none;
+}
+.form-group select:focus,
+.form-group input:focus {
+  outline: none;
+  border-color: #0a3d2e;
+}
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.radio-btn {
+  flex: 1;
+  min-width: 80px;
+  text-align: center;
+  padding: 0.55rem 0.5rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  background: #f5f5f3;
+  color: #555;
+  user-select: none;
+}
+.radio-btn.selected {
+  background: #e8f5f0;
+  border-color: #0a3d2e;
+  color: #0a3d2e;
+  font-weight: 500;
+}
+
+/* 結果 */
+.result-card {
+  background: #0a3d2e;
+  color: #fff;
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  display: none;
+}
+.result-card.show { display: block; }
+.result-label { font-size: 0.82rem; color: #a8d5c2; margin-bottom: 0.3rem; }
+.result-price {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #f0a500;
+  margin-bottom: 0.5rem;
+}
+.result-price span { font-size: 1rem; font-weight: 400; color: #a8d5c2; }
+.result-note { font-size: 0.78rem; color: #a8d5c2; line-height: 1.6; }
+.result-breakdown {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: #d0ede4;
+  padding: 0.25rem 0;
+}
+
+.calc-btn {
+  width: 100%;
+  padding: 0.85rem;
+  background: #f0a500;
+  color: #3a2500;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  margin-top: 0.5rem;
+}
+
+.notice {
+  font-size: 0.78rem;
+  color: #888;
+  line-height: 1.7;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 1rem;
+}
+
+.contact-bar {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 14px;
+  padding: 1.25rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.contact-bar p { font-size: 0.85rem; color: #555; margin-bottom: 0.75rem; }
+.contact-bar a {
+  display: inline-block;
+  padding: 0.7rem 1.75rem;
+  background: #0a3d2e;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.panel { display: none; }
+.panel.active { display: block; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html">ホーム</a>
+  <a href="index.html#services">サービス</a>
+  <a href="index.html#area">対応エリア</a>
+  <a href="index.html#about">会社概要</a>
+  <a href="index.html#contact">お問い合わせ</a>
+  <a href="simulator.html" class="active">料金シミュレーター</a>
+  <a href="cases.html">対応事例</a>
+</nav>
+
+<div class="page-header">
+  <h1>💴 料金シミュレーター</h1>
+  <p>ご依頼内容を選ぶだけで概算料金をすぐ確認できます</p>
+</div>
+
+<div class="container">
+
+  <div class="card">
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('delivery')">📦 軽貨物配送</button>
+      <button class="tab" onclick="switchTab('repair')">🔧 家電修理</button>
+    </div>
+
+    <!-- 配送パネル -->
+    <div id="panel-delivery" class="panel active">
+      <div class="form-group">
+        <label>配送距離</label>
+        <div class="radio-group" id="distance-group">
+          <div class="radio-btn selected" onclick="select(this,'distance','5')">〜5km</div>
+          <div class="radio-btn" onclick="select(this,'distance','15')">5〜15km</div>
+          <div class="radio-btn" onclick="select(this,'distance','30')">15〜30km</div>
+          <div class="radio-btn" onclick="select(this,'distance','50')">30km〜</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>荷物の大きさ</label>
+        <div class="radio-group" id="size-group">
+          <div class="radio-btn selected" onclick="select(this,'size','small')">小型<br><small>60サイズ以下</small></div>
+          <div class="radio-btn" onclick="select(this,'size','medium')">中型<br><small>〜100サイズ</small></div>
+          <div class="radio-btn" onclick="select(this,'size','large')">大型<br><small>〜160サイズ</small></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>便の種類</label>
+        <div class="radio-group" id="type-group">
+          <div class="radio-btn selected" onclick="select(this,'type','spot')">スポット便</div>
+          <div class="radio-btn" onclick="select(this,'type','regular')">定期便</div>
+          <div class="radio-btn" onclick="select(this,'type','urgent')">急ぎ便</div>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcDelivery()">料金を計算する</button>
+    </div>
+
+    <!-- 修理パネル -->
+    <div id="panel-repair" class="panel">
+      <div class="form-group">
+        <label>家電の種類</label>
+        <select id="appliance">
+          <option value="washer">洗濯機</option>
+          <option value="fridge">冷蔵庫</option>
+          <option value="aircon">エアコン</option>
+          <option value="tv">テレビ</option>
+          <option value="other">その他家電</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>症状・内容</label>
+        <div class="radio-group" id="symptom-group">
+          <div class="radio-btn selected" onclick="select(this,'symptom','check')">点検・診断</div>
+          <div class="radio-btn" onclick="select(this,'symptom','minor')">軽微な修理</div>
+          <div class="radio-btn" onclick="select(this,'symptom','major')">本格修理</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>出張希望</label>
+        <div class="radio-group" id="visit-group">
+          <div class="radio-btn selected" onclick="select(this,'visit','yes')">出張あり</div>
+          <div class="radio-btn" onclick="select(this,'visit','no')">持込み</div>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcRepair()">料金を計算する</button>
+    </div>
+  </div>
+
+  <!-- 結果表示 -->
+  <div class="result-card" id="result">
+    <div class="result-label">概算料金（税込）</div>
+    <div class="result-price" id="result-price">¥0 <span>〜</span></div>
+    <div class="result-breakdown" id="result-breakdown"></div>
+    <div class="result-note" style="margin-top:0.75rem;">※あくまでも概算です。正式なお見積もりはお問い合わせください。</div>
+  </div>
+
+  <div class="notice">
+    ⚠️ このシミュレーターは目安料金です。実際の料金は荷物の種類・道路状況・修理内容により異なります。正式なお見積もりは無料でご提示します。
+  </div>
+
+  <div class="contact-bar">
+    <p>正確なお見積もり・ご相談はお気軽に</p>
+    <a href="index.html#contact">📞 無料で相談する</a>
+  </div>
+
+</div>
+
+<script>
+const state = {
+  distance: '5',
+  size: 'small',
+  type: 'spot',
+  symptom: 'check',
+  visit: 'yes'
+};
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('panel-' + tab).classList.add('active');
+  document.getElementById('result').classList.remove('show');
+}
+
+function select(el, key, val) {
+  el.closest('.radio-group').querySelectorAll('.radio-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  state[key] = val;
+}
+
+function calcDelivery() {
+  const baseMap = { '5': 1500, '15': 2500, '30': 4000, '50': 6000 };
+  const sizeAdd = { small: 0, medium: 500, large: 1200 };
+  const typeRate = { spot: 1.0, regular: 0.85, urgent: 1.4 };
+
+  const base = baseMap[state.distance];
+  const sizeExtra = sizeAdd[state.size];
+  const typeLabel = { spot: 'スポット', regular: '定期（割引）', urgent: '急ぎ便（割増）' };
+  const total = Math.ceil((base + sizeExtra) * typeRate[state.type] / 100) * 100;
+  const upper = total + 1000;
+
+  showResult(
+    `¥${total.toLocaleString()} <span>〜 ¥${upper.toLocaleString()}</span>`,
+    `<div class="breakdown-row"><span>基本料金（距離）</span><span>¥${base.toLocaleString()}</span></div>
+     <div class="breakdown-row"><span>サイズ追加</span><span>¥${sizeExtra.toLocaleString()}</span></div>
+     <div class="breakdown-row"><span>便の種類（${typeLabel[state.type]}）</span><span>×${typeRate[state.type]}</span></div>`
+  );
+}
+
+function calcRepair() {
+  const applianceBase = { washer: 8000, fridge: 9000, aircon: 10000, tv: 7000, other: 6000 };
+  const symptomAdd = { check: 0, minor: 5000, major: 15000 };
+  const visitAdd = { yes: 3000, no: 0 };
+  const applianceLabel = { washer:'洗濯機', fridge:'冷蔵庫', aircon:'エアコン', tv:'テレビ', other:'その他' };
+  const symptomLabel = { check:'点検・診断', minor:'軽微な修理', major:'本格修理' };
+
+  const appliance = document.getElementById('appliance').value;
+  const base = applianceBase[appliance];
+  const symptomExtra = symptomAdd[state.symptom];
+  const visitExtra = visitAdd[state.visit];
+  const total = base + symptomExtra + visitExtra;
+  const upper = total + 5000;
+
+  showResult(
+    `¥${total.toLocaleString()} <span>〜 ¥${upper.toLocaleString()}</span>`,
+    `<div class="breakdown-row"><span>基本診断料（${applianceLabel[appliance]}）</span><span>¥${base.toLocaleString()}</span></div>
+     <div class="breakdown-row"><span>作業料（${symptomLabel[state.symptom]}）</span><span>¥${symptomExtra.toLocaleString()}</span></div>
+     <div class="breakdown-row"><span>出張費</span><span>¥${visitExtra.toLocaleString()}</span></div>`
+  );
+}
+
+function showResult(price, breakdown) {
+  document.getElementById('result-price').innerHTML = price;
+  document.getElementById('result-breakdown').innerHTML = breakdown;
+  const r = document.getElementById('result');
+  r.classList.add('show');
+  r.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>

@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>青トンボ運送合同会社 | 静岡市清水区の軽貨物配送・家電修理</title>
+<title>青トンボ運送合同会社 | 静岡市の軽貨物配送・家電修理</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: #1a1a1a; }
 
+/* ナビ */
 .nav {
   background: #051f17;
   display: flex;
@@ -23,71 +24,65 @@ body { font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: #1a1a1a;
   font-size: 0.85rem;
   padding: 0.8rem 1rem;
   display: block;
-  transition: color 0.2s;
 }
 .nav a:hover { color: #fff; }
-
 section[id], div[id] { scroll-margin-top: 45px; }
 
+/* ヒーロー（写真背景） */
 .hero {
-  background: #0a3d2e;
-  color: #fff;
-  padding: 3rem 2rem 4rem;
-  text-align: center;
   position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   overflow: hidden;
+  color: #fff;
 }
-.hero::before {
-  content: '';
+.hero-bg {
   position: absolute;
-  top: -60px; right: -60px;
-  width: 220px; height: 220px;
-  border-radius: 50%;
-  background: #1a6b50;
-  opacity: 0.4;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=1200&q=80');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.45);
 }
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -40px; left: -40px;
-  width: 140px; height: 140px;
-  border-radius: 50%;
-  background: #1a6b50;
-  opacity: 0.3;
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 1.5rem;
+  max-width: 600px;
 }
-.logo-mark {
+.company-badge {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 2rem;
-  position: relative;
-  z-index: 1;
-}
-.dragonfly { font-size: 2.2rem; }
-.company-name { font-size: 1rem; color: #a8d5c2; letter-spacing: 0.1em; }
-.hero h1 {
-  font-size: 1.7rem;
-  font-weight: 500;
-  color: #fff;
-  line-height: 1.5;
-  margin-bottom: 0.75rem;
-  position: relative;
-  z-index: 1;
-}
-.hero-sub {
-  font-size: 0.95rem;
+  gap: 8px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
   color: #a8d5c2;
+  margin-bottom: 1.25rem;
+}
+.hero-content h1 {
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1.45;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.hero-content p {
+  font-size: 0.95rem;
+  color: #d0ede4;
   margin-bottom: 2rem;
-  position: relative;
-  z-index: 1;
+  line-height: 1.6;
 }
 .hero-btns {
   display: flex;
   gap: 12px;
   justify-content: center;
   flex-wrap: wrap;
-  position: relative;
-  z-index: 1;
 }
 .btn-primary {
   background: #f0a500;
@@ -96,7 +91,7 @@ section[id], div[id] { scroll-margin-top: 45px; }
   padding: 0.75rem 1.75rem;
   border-radius: 8px;
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
@@ -104,7 +99,7 @@ section[id], div[id] { scroll-margin-top: 45px; }
 .btn-secondary {
   background: transparent;
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.5);
   padding: 0.75rem 1.75rem;
   border-radius: 8px;
   font-size: 0.95rem;
@@ -112,7 +107,16 @@ section[id], div[id] { scroll-margin-top: 45px; }
   text-decoration: none;
   display: inline-block;
 }
+.hero-photo-credit {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.5);
+  z-index: 2;
+}
 
+/* 電話バー */
 .tel-bar {
   background: #f0a500;
   color: #3a2500;
@@ -128,6 +132,7 @@ section[id], div[id] { scroll-margin-top: 45px; }
   margin: 0 6px;
 }
 
+/* 共通セクション */
 .section { padding: 2.5rem 1.5rem; }
 .section-title {
   font-size: 1.2rem;
@@ -140,7 +145,6 @@ section[id], div[id] { scroll-margin-top: 45px; }
   font-size: 0.82rem;
   color: #888;
   text-align: center;
-  margin-bottom: 0;
   letter-spacing: 0.08em;
 }
 .divider {
@@ -150,6 +154,7 @@ section[id], div[id] { scroll-margin-top: 45px; }
   margin: 0.5rem auto 1.8rem;
 }
 
+/* サービス */
 .services { background: #f5f5f3; }
 .service-grid {
   display: grid;
@@ -162,18 +167,24 @@ section[id], div[id] { scroll-margin-top: 45px; }
   background: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 12px;
-  padding: 1.5rem 1.25rem;
-  text-align: center;
+  overflow: hidden;
 }
-.service-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+.service-photo {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+.service-body { padding: 1.1rem; text-align: center; }
+.service-icon { font-size: 1.6rem; margin-bottom: 0.5rem; display: block; }
 .service-card h3 {
   font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   color: #0a3d2e;
 }
 .service-card p { font-size: 0.82rem; color: #555; line-height: 1.6; }
 
+/* 選ばれる理由 */
 .features { background: #fff; }
 .feature-list {
   max-width: 520px;
@@ -192,20 +203,17 @@ section[id], div[id] { scroll-margin-top: 45px; }
   border: 1px solid #e0e0e0;
 }
 .feature-check {
-  width: 24px;
-  height: 24px;
+  width: 24px; height: 24px;
   background: #0a3d2e;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 1px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
 }
 .feature-check::after { content: '✓'; color: #fff; font-size: 13px; }
 .feature-item h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 2px; }
 .feature-item p { font-size: 0.8rem; color: #555; line-height: 1.5; }
 
+/* 対応エリア */
 .area { background: #f5f5f3; }
 .area-box {
   max-width: 480px;
@@ -219,6 +227,7 @@ section[id], div[id] { scroll-margin-top: 45px; }
 .area-main { font-size: 1.1rem; font-weight: 500; color: #0a3d2e; margin-bottom: 0.5rem; }
 .area-detail { font-size: 0.85rem; color: #555; line-height: 1.7; }
 
+/* 会社概要 */
 .about { background: #fff; }
 .about-box {
   max-width: 480px;
@@ -228,10 +237,7 @@ section[id], div[id] { scroll-margin-top: 45px; }
   border-radius: 12px;
   overflow: hidden;
 }
-.about-row {
-  display: flex;
-  border-bottom: 1px solid #e0e0e0;
-}
+.about-row { display: flex; border-bottom: 1px solid #e0e0e0; }
 .about-row:last-child { border-bottom: none; }
 .about-label {
   background: #0a3d2e;
@@ -240,8 +246,7 @@ section[id], div[id] { scroll-margin-top: 45px; }
   padding: 0.85rem 1rem;
   width: 110px;
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
+  display: flex; align-items: center;
 }
 .about-value {
   font-size: 0.85rem;
@@ -249,8 +254,6 @@ section[id], div[id] { scroll-margin-top: 45px; }
   padding: 0.85rem 1rem;
   line-height: 1.6;
 }
-
-/* Googleマップ */
 .map-wrap {
   max-width: 480px;
   margin: 1.5rem auto 0;
@@ -258,13 +261,9 @@ section[id], div[id] { scroll-margin-top: 45px; }
   overflow: hidden;
   border: 1px solid #e0e0e0;
 }
-.map-wrap iframe {
-  width: 100%;
-  height: 260px;
-  border: none;
-  display: block;
-}
+.map-wrap iframe { width: 100%; height: 260px; border: none; display: block; }
 
+/* お問い合わせ */
 .contact-section {
   background: #0a3d2e;
   padding: 2.5rem 1.5rem;
@@ -289,6 +288,7 @@ section[id], div[id] { scroll-margin-top: 45px; }
 .contact-card h4 { font-size: 0.85rem; color: #a8d5c2; margin-bottom: 0.3rem; }
 .contact-card p { font-size: 0.9rem; color: #fff; font-weight: 500; }
 
+/* フッター */
 .footer {
   background: #051f17;
   color: #a8d5c2;
@@ -297,6 +297,8 @@ section[id], div[id] { scroll-margin-top: 45px; }
   font-size: 0.78rem;
 }
 .footer-name { font-size: 0.9rem; color: #fff; margin-bottom: 0.3rem; }
+.footer-links { margin-top: 0.75rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.footer-links a { color: #a8d5c2; text-decoration: none; font-size: 0.78rem; }
 </style>
 </head>
 <body>
@@ -307,43 +309,59 @@ section[id], div[id] { scroll-margin-top: 45px; }
   <a href="#area">対応エリア</a>
   <a href="#about">会社概要</a>
   <a href="#contact">お問い合わせ</a>
+  <a href="simulator.html">料金シミュレーター</a>
+  <a href="cases.html">対応事例</a>
 </nav>
 
+<!-- ホーム：写真背景ヒーロー -->
 <div id="home" class="hero">
-  <div class="logo-mark">
-    <span class="dragonfly">🚐</span>
-    <span class="company-name">青トンボ運送合同会社</span>
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="company-badge">🚐 青トンボ運送合同会社</div>
+    <h1>静岡・清水区の<br>頼れる地域密着配送</h1>
+    <p>軽貨物配送 ／ 家電修理<br>スピード対応でお困りごとを解決します</p>
+    <div class="hero-btns">
+      <a class="btn-primary" href="#contact">今すぐ相談する</a>
+      <a class="btn-secondary" href="simulator.html">料金を調べる</a>
+    </div>
   </div>
-  <h1>静岡・清水区の<br>頼れる地域密着配送</h1>
-  <p class="hero-sub">軽貨物配送 ／ 家電修理　スピード対応でお困りごとを解決します</p>
-  <div class="hero-btns">
-    <a class="btn-primary" href="#contact">今すぐ相談する</a>
-    <a class="btn-secondary" href="#services">サービス詳細</a>
-  </div>
+  <div class="hero-photo-credit">Photo: Unsplash</div>
 </div>
 
 <div class="tel-bar">
   お気軽にご連絡ください　<span>0XX-XXX-XXXX</span>　受付 8:00〜19:00（年中無休）
 </div>
 
+<!-- サービス -->
 <section id="services" class="section services">
   <p class="section-title">サービス</p>
   <p class="section-sub">SERVICES</p>
   <div class="divider"></div>
   <div class="service-grid">
     <div class="service-card">
-      <span class="service-icon">📦</span>
-      <h3>軽貨物配送</h3>
-      <p>小荷物から精密機器まで、丁寧・迅速にお届けします。スポット便・定期便どちらも対応可能です。</p>
+      <img class="service-photo"
+        src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80"
+        alt="軽貨物配送サービス">
+      <div class="service-body">
+        <span class="service-icon">📦</span>
+        <h3>軽貨物配送</h3>
+        <p>小荷物から精密機器まで、丁寧・迅速にお届けします。スポット便・定期便どちらも対応可能です。</p>
+      </div>
     </div>
     <div class="service-card">
-      <span class="service-icon">🔧</span>
-      <h3>家電修理</h3>
-      <p>洗濯機・冷蔵庫・エアコンなど生活家電の修理・点検を行います。出張対応いたします。</p>
+      <img class="service-photo"
+        src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&q=80"
+        alt="家電修理サービス">
+      <div class="service-body">
+        <span class="service-icon">🔧</span>
+        <h3>家電修理</h3>
+        <p>洗濯機・冷蔵庫・エアコンなど生活家電の修理・点検を行います。出張対応いたします。</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- 選ばれる理由 -->
 <section class="section features">
   <p class="section-title">選ばれる理由</p>
   <p class="section-sub">WHY CHOOSE US</p>
@@ -351,84 +369,53 @@ section[id], div[id] { scroll-margin-top: 45px; }
   <div class="feature-list">
     <div class="feature-item">
       <div class="feature-check"></div>
-      <div>
-        <h4>地域密着の安心感</h4>
-        <p>静岡市清水区を拠点に、地元を知り尽くしたスタッフが迅速に対応します。</p>
-      </div>
+      <div><h4>地域密着の安心感</h4><p>静岡市清水区を拠点に、地元を知り尽くしたスタッフが迅速に対応します。</p></div>
     </div>
     <div class="feature-item">
       <div class="feature-check"></div>
-      <div>
-        <h4>スピード対応</h4>
-        <p>ご連絡から最短即日でお伺い。お急ぎのご依頼もお気軽にご相談ください。</p>
-      </div>
+      <div><h4>スピード対応</h4><p>ご連絡から最短即日でお伺い。お急ぎのご依頼もお気軽にご相談ください。</p></div>
     </div>
     <div class="feature-item">
       <div class="feature-check"></div>
-      <div>
-        <h4>明朗会計</h4>
-        <p>作業前に必ずお見積もりをご提示。追加費用が発生する場合は事前にご説明します。</p>
-      </div>
+      <div><h4>明朗会計</h4><p>作業前に必ずお見積もりをご提示。追加費用が発生する場合は事前にご説明します。</p></div>
     </div>
   </div>
 </section>
 
+<!-- 対応エリア -->
 <section id="area" class="section area">
   <p class="section-title">対応エリア</p>
   <p class="section-sub">SERVICE AREA</p>
   <div class="divider"></div>
   <div class="area-box">
     <p class="area-main">静岡市を中心に対応しています</p>
-    <p class="area-detail">
-      清水区・葵区・駿河区<br>
-      ※エリア外もご相談ください
-    </p>
+    <p class="area-detail">清水区・葵区・駿河区<br>※エリア外もご相談ください</p>
   </div>
 </section>
 
+<!-- 会社概要 -->
 <section id="about" class="section about">
   <p class="section-title">会社概要</p>
   <p class="section-sub">ABOUT US</p>
   <div class="divider"></div>
   <div class="about-box">
-    <div class="about-row">
-      <span class="about-label">会社名</span>
-      <span class="about-value">青トンボ運送合同会社</span>
-    </div>
-    <div class="about-row">
-      <span class="about-label">所在地</span>
-      <span class="about-value">〒420-0859 静岡県静岡市葵区栄町2番地5<br>アークビルディング502</span>
-    </div>
-    <div class="about-row">
-      <span class="about-label">代表者</span>
-      <span class="about-value">青野 浩行</span>
-    </div>
-    <div class="about-row">
-      <span class="about-label">事業内容</span>
-      <span class="about-value">軽貨物配送・家電修理</span>
-    </div>
-    <div class="about-row">
-      <span class="about-label">営業時間</span>
-      <span class="about-value">8:00〜19:00（年中無休）</span>
-    </div>
-    <div class="about-row">
-      <span class="about-label">電話番号</span>
-      <span class="about-value">0XX-XXX-XXXX</span>
-    </div>
+    <div class="about-row"><span class="about-label">会社名</span><span class="about-value">青トンボ運送合同会社</span></div>
+    <div class="about-row"><span class="about-label">所在地</span><span class="about-value">〒420-0859 静岡県静岡市葵区栄町2番地5<br>アークビルディング502</span></div>
+    <div class="about-row"><span class="about-label">代表者</span><span class="about-value">青野 浩行</span></div>
+    <div class="about-row"><span class="about-label">事業内容</span><span class="about-value">軽貨物配送・家電修理</span></div>
+    <div class="about-row"><span class="about-label">営業時間</span><span class="about-value">8:00〜19:00（年中無休）</span></div>
+    <div class="about-row"><span class="about-label">電話番号</span><span class="about-value">0XX-XXX-XXXX</span></div>
   </div>
-
-  <!-- Googleマップ（静岡市葵区栄町2-5 アークビルディング） -->
   <div class="map-wrap">
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.0!2d138.3867!3d34.9756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601be0e1c58a0001%3A0x1!2z5oiQ5bKp55S677yS5LiB5Zue77yV44CA6Z2S5bKp55yM6Z2S5bKp5biC6JGJ5Yy655S677yS55S677yV!5e0!3m2!1sja!2sjp!4v1700000000000"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
       title="青トンボ運送合同会社 所在地マップ">
     </iframe>
   </div>
 </section>
 
+<!-- お問い合わせ -->
 <section id="contact" class="contact-section">
   <p class="section-title">お問い合わせ</p>
   <p class="section-sub">CONTACT</p>
@@ -451,6 +438,10 @@ section[id], div[id] { scroll-margin-top: 45px; }
 <footer class="footer">
   <p class="footer-name">青トンボ運送合同会社</p>
   <p>〒420-0859 静岡県静岡市葵区栄町2番地5 アークビルディング502</p>
+  <div class="footer-links">
+    <a href="simulator.html">料金シミュレーター</a>
+    <a href="cases.html">対応事例</a>
+  </div>
   <p style="margin-top: 0.75rem;">© 2024 青トンボ運送合同会社</p>
 </footer>
 
